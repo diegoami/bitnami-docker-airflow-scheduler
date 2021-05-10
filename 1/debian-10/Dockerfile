@@ -29,7 +29,14 @@ ENV AIRFLOW_HOME="/opt/bitnami/airflow" \
     NSS_WRAPPER_GROUP="/opt/bitnami/airflow/nss_group" \
     NSS_WRAPPER_PASSWD="/opt/bitnami/airflow/nss_passwd" \
     PATH="/opt/bitnami/common/bin:/opt/bitnami/python/bin:/opt/bitnami/postgresql/bin:/opt/bitnami/airflow/venv/bin:$PATH"
-
+RUN /opt/bitnami/python/bin/python -m pip install tensorflow
+RUN /opt/bitnami/python/bin/python -m pip install tqdm
+RUN /opt/bitnami/python/bin/python -m pip install scikit-learn
+RUN /opt/bitnami/python/bin/python -m pip install keras
+RUN /opt/bitnami/airflow/venv/bin/python -m pip install tensorflow
+RUN /opt/bitnami/airflow/venv/bin/python -m pip install tqdm
+RUN /opt/bitnami/airflow/venv/bin/python -m pip install scikit-learn
+RUN /opt/bitnami/airflow/venv/bin/python -m pip install keras
 USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/airflow-scheduler/entrypoint.sh" ]
 CMD [ "/opt/bitnami/scripts/airflow-scheduler/run.sh" ]
