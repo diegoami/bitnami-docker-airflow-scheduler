@@ -33,10 +33,16 @@ RUN /opt/bitnami/python/bin/python -m pip install tensorflow
 RUN /opt/bitnami/python/bin/python -m pip install tqdm
 RUN /opt/bitnami/python/bin/python -m pip install scikit-learn
 RUN /opt/bitnami/python/bin/python -m pip install keras
+RUN /opt/bitnami/python/bin/python -m pip install nltk
+RUN /opt/bitnami/python/bin/python -m pip install seaborn
+RUN /opt/bitnami/python/bin/python -m nltk.downloader stopwords
 RUN /opt/bitnami/airflow/venv/bin/python -m pip install tensorflow
 RUN /opt/bitnami/airflow/venv/bin/python -m pip install tqdm
 RUN /opt/bitnami/airflow/venv/bin/python -m pip install scikit-learn
 RUN /opt/bitnami/airflow/venv/bin/python -m pip install keras
+RUN /opt/bitnami/airflow/venv/bin/python -m pip install nltk
+RUN /opt/bitnami/airflow/venv/bin/python -m pip install seaborn
+RUN /opt/bitnami/airflow/venv/bin/python -m nltk.downloader stopwords
 USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/airflow-scheduler/entrypoint.sh" ]
 CMD [ "/opt/bitnami/scripts/airflow-scheduler/run.sh" ]
